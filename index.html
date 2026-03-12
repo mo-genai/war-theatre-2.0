@@ -55,7 +55,6 @@
       min-height: 100vh;
     }
 
-    /* ─── Top Bar ─── */
     #topbar {
       position: sticky;
       top: 0;
@@ -107,10 +106,7 @@
     .dark .toggle-thumb { background: #1c1c1a; }
     .toggle-track.on .toggle-thumb { transform: translateX(-1.1rem); }
 
-    .search-wrap {
-      flex: 1;
-      max-width: 320px;
-    }
+    .search-wrap { flex: 1; max-width: 320px; }
     #search-input {
       width: 100%;
       padding: 0.38rem 0.8rem;
@@ -128,7 +124,6 @@
     #search-input:focus { border-color: var(--muted); }
     #search-count { font-size: 0.7rem; color: var(--muted); padding: 0.2rem 0.1rem 0; min-height: 1em; }
 
-    /* Glossary button */
     .gloss-btn {
       flex-shrink: 0;
       display: flex;
@@ -147,27 +142,15 @@
       transition: border-color 0.2s, color 0.2s, background 0.2s;
       margin-right: auto;
     }
-    .gloss-btn:hover {
-      border-color: var(--muted);
-      color: var(--fg);
-    }
-    .gloss-btn.active {
-      background: var(--gloss-bg);
-      border-color: var(--gloss-border);
-      color: var(--fg);
-    }
+    .gloss-btn:hover { border-color: var(--muted); color: var(--fg); }
+    .gloss-btn.active { background: var(--gloss-bg); border-color: var(--gloss-border); color: var(--fg); }
     .gloss-btn svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      width: 13px; height: 13px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
       flex-shrink: 0;
     }
 
-    /* ─── Glossary Modal ─── */
     .glossary-overlay {
       display: none;
       position: fixed;
@@ -180,10 +163,7 @@
     }
     .glossary-overlay.open { display: flex; align-items: flex-end; justify-content: center; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp {
       from { transform: translateY(24px); opacity: 0; }
       to   { transform: translateY(0);    opacity: 1; }
@@ -200,7 +180,6 @@
       animation: slideUp 0.25s ease;
       transition: background 0.35s;
     }
-
     .glossary-modal-header {
       display: flex;
       align-items: center;
@@ -215,8 +194,7 @@
       text-transform: uppercase;
     }
     .gloss-close {
-      width: 1.7rem;
-      height: 1.7rem;
+      width: 1.7rem; height: 1.7rem;
       border-radius: 50%;
       border: 1px solid var(--gloss-border);
       background: transparent;
@@ -251,7 +229,6 @@
     mark.search-hit { background: var(--highlight); color: var(--fg); border-radius: 2px; padding: 0 1px; }
     mark.search-hit.current { outline: 1px solid var(--muted); }
 
-    /* ─── Main layout ─── */
     main { max-width: 660px; margin: 0 auto; padding: 4.5rem 2rem 10rem; }
 
     header { margin-bottom: 3rem; }
@@ -307,7 +284,6 @@
       h1 { font-size: 1.8rem; }
       #topbar { padding: 0.6rem 1.1rem; gap: 0.8rem; }
       .search-wrap { max-width: none; }
-      /* span stays visible — no hiding here */
       .glossary-modal { padding: 1.2rem 1.1rem 2rem; border-radius: 10px 10px 0 0; }
     }
   </style>
@@ -331,7 +307,6 @@
     </button>
   </div>
 
-  <!-- Glossary Modal Overlay -->
   <div class="glossary-overlay" id="glossary-overlay" onclick="handleOverlayClick(event)">
     <div class="glossary-modal" id="glossary-modal">
       <div class="glossary-modal-header">
@@ -370,7 +345,7 @@
   <main>
 
     <header>
-      <span class="site-label">Essay </span>
+      <span class="site-label">Essay — March 2026</span>
       <h1>ما تراه ليس حربًا</h1>
       <p class="subtitle">قراءة في بنية القوة العالمية وانتقال الشرق الأوسط</p>
       <p class="date">مارس ٢٠٢٦</p>
@@ -485,6 +460,7 @@
       <p>إيران دولة أمنية محترفة. المرشد الأعلى لا يُكشف موقعه دون قرار بذلك. ما جرى يمكن قراءته على أنه شرط الإغلاق الأخير: أزاحت إيران آخر عقبة أمام التحول، ومنحت النظام الجديد في الوقت ذاته غطاءً رمزياً لا يُشترى. التنازلات تُسوَّق الآن كـ"وفاء لدم الشهيد"، لا اعترافًا بالهزيمة.</p>
       <p>سليماني. قيادات حزب الله. رئيسي. الخامنئي.</p>
       <p>الدولة لم تتوقف لحظة.</p>
+      <p>في ٧ مارس، قبل يوم واحد من إعلان مجتبى، ألقى بيزشكيان خطابًا سحب فيه صلاحية إطلاق النار المستقل من الحرس الثوري وأعلن السيطرة المدنية على القوات المسلحة. الحرس الثوري أبدى غضبًا مؤسسيًا علنيًا. هذا الغضب هو الدليل: لو كان لديهم القدرة على وقف الخطاب لوقفوه، ولم يكتفوا بالاحتجاج بعده. الجناح البراغماتي استخدم الحرب لإنجاز ما عجزت عنه السياسة في زمن السلم.</p>
     </section>
 
     <hr class="divider" />
@@ -498,9 +474,14 @@
         <p>عملية هدم محكوم ألبست زي حرب. عملية نهاية أسبوع لإعادة هيكلة بنية القوة في المنطقة بينما الجميع منشغل بمشاهد الصواريخ.</p>
       </blockquote>
 
+      <p class="sub-heading">نمط الاستهداف</p>
+      <p>لم يُقصف البرلمان الإيراني. لم يُستهدف مكتب بيزشكيان. لم تُمس مؤسسات الدولة. ما استُهدف بالضبط هو الهيكل القيادي للحرس الثوري، وخامنئي، ومبنى مجلس الخبراء أثناء جلسة خلافة كانت ستُكرّس المسار القديم. هذا ليس استهداف تغيير نظام. هذا استهداف إزاحة فصيل.</p>
+
       <p class="sub-heading">نتنياهو</p>
       <p>ائتلافه ينهار، القضاء يلاحقه، وهدفه في غزة فشل. ضربة تُقدَّم إعلاميًا بأنها حيّدت البرنامج النووي تمنحه مخرجًا بطوليًا. يحتاج إيران أن تردّ. وإيران تحتاج مشهدًا يرضي متشدديها. مصلحتاهما تلتقيان في الأداء.</p>
       <p>الخليج والـ FIC يمتلكان سلّم التصعيد ويضبطانه. التنسيق بينهما نابع من ضرورة مشتركة: الصفقة الكبرى يجب أن تنجح.</p>
+      <p class="sub-heading">الضربة الأخيرة</p>
+      <p>على الأرجح ستأتي ضربة واحدة أخيرة على منشأة نووية إيرانية، مصممة لإنتاج مشهد بصري واحد. الهدف الحقيقي منها الصورة، لا الأثر الاستراتيجي. النتيجة الاستراتيجية تحققت بالفعل عبر أسابيع من الضربات الجوية. ما تحتاجه الإدارة الأمريكية الآن هو جملة واحدة يفهمها كل ناخب: "دمرنا البرنامج النووي الإيراني." هذا خروج من الحرب، لا تصعيد. وما إن تُطلق هذه الجملة، يصبح الاستمرار في القتال تناقضًا مع النصر المُعلن. وقف إطلاق النار يتبعها بأيام.</p>
     </section>
 
     <hr class="divider" />
@@ -514,6 +495,8 @@
         <p>هرمز لغة تفاوض مالية. من يهدده يخاطب السوق العالمية والدول الصناعية وشبكات رأس المال في آنٍ واحد.</p>
       </blockquote>
       <p>هرمز أيضًا ورقة ضمان: أي اتفاق لن يتماسك دون أن يُفتح المضيق كليًا. إيران تعرف هذا. وكل من على طاولة التفاوض يعرف أنها تعرف.</p>
+      <p>سعر النفط عند ٨٩ دولارًا يقول هذا بدقة. رُفض من ١١٩ لأن السوق لا يصدق الانهيار الكامل. لم يعد إلى ٧٠ لأن السوق لا يصدق الحل الكامل. ٨٩ هو سعر أزمة يمكن تحملها لكنها لم تُحسم بعد. من يفهم هذا الرقم يعرف أين نحن على الخريطة.</p>
+      <p>حين أغلق الحرس الثوري هرمز، أول من اتصل مطالبًا بإعادة فتحه لم يكن أمريكا ولا السعودية. كانت الصين. هذا يكشف الخلل الجوهري في نموذج الحرس الثوري: أقوى أسلحتهم كان رهينة مصلحة حليفهم الأكبر قبل أن يكون تهديدًا لعدوهم. ليس سيادة. هذا وهم السيادة.</p>
     </section>
 
     <hr class="divider" />
@@ -586,6 +569,7 @@
 
       <p class="sub-heading">الخليج</p>
       <p>تحوّل من مموّل صامت إلى مهندس إقليمي. IMEC، شراكات الطاقة، مراكز التمويل، كلها تمر عبر الأجندة الخليجية. رؤية ٢٠٣٠ تحتاج منطقة مستقرة. هذه المنطقة صارت متاحة.</p>
+      <p>الخليج تحمّل ضربات الحرس الثوري على أراضيه بحساب مدروس. كان يعرف مسبقًا أن الحرس الثوري سيردّ على كل من في متناوله حين تبدأ الضربات الأمريكية. سمح بذلك لأن هذه الضربات منحته المبرر العلني الذي أراده منذ زمن: "كنا نُضرب والقواعد الأمريكية بيننا لم تحمنا. نحتاج منظومة أمن مختلفة." هذه الجملة أصبحت الآن الموقف الرسمي المُعلن لدبلوماسيي الخليج.</p>
 
       <p class="sub-heading">أمريكا</p>
       <p>الهدف إغلاق ملف الشرق الأوسط العسكري والتفرغ للصين. ضمان أمن الممرات تحوّل من التزام أوتوماتيكي إلى خدمة مدفوعة.</p>
@@ -594,7 +578,7 @@
     <hr class="divider" />
 
     <section>
-      <h2>ختامًا</h2>
+      <h2>خاتمة</h2>
       <p>ما ظهر على مسرح الحرب لم يكن صراعًا تقليديًا على البقاء بقدر ما كان مرحلة عنيفة من إعادة ترتيب المنطقة.</p>
       <p>فصل البارود لم ينته تمامًا، لكنه لم يعد وحده ما يحكم المشهد. الذي يتقدم الآن منطق آخر: الطاقة، والممرات، والاستثمار، وإعادة تعريف من يملك حق ضبط الاستقرار وفرض شكله.</p>
       <p>الحرب كانت تمهيدًا لمرحلة أبرد وأكثر حسابًا. مرحلة يتراجع فيها وزن السلاح المفتوح لمصلحة المال، وتتحول فيها بعض القوى من دور التعبئة والصدام إلى دور التموضع داخل نظام جديد.</p>
@@ -610,7 +594,6 @@
   </main>
 
   <script>
-    // Dark mode
     let dark = false;
     function toggleDark() {
       dark = !dark;
@@ -618,7 +601,6 @@
       document.getElementById('toggle-track').classList.toggle('on', dark);
     }
 
-    // Glossary modal
     function toggleGlossary() {
       const overlay = document.getElementById('glossary-overlay');
       const btn     = document.getElementById('gloss-btn');
@@ -635,37 +617,29 @@
     }
 
     function handleOverlayClick(e) {
-      // close only when clicking the backdrop, not the modal card itself
       if (e.target === document.getElementById('glossary-overlay')) closeGlossary();
     }
 
-    // Close on Escape key
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGlossary(); });
 
-    // Search — backup/restore approach (reliable with Arabic DOM)
     const input   = document.getElementById('search-input');
     const countEl = document.getElementById('search-count');
     let hits = [], cur = 0, timer;
     const mainEl = document.querySelector('main');
 
-    // Snapshot clean HTML once on load
     let originalHTML = '';
     window.addEventListener('DOMContentLoaded', () => { originalHTML = mainEl.innerHTML; });
-    // Fallback if DOMContentLoaded already fired
     if (document.readyState !== 'loading') originalHTML = mainEl.innerHTML;
 
     function clearHL() {
-      mainEl.innerHTML = originalHTML;   // full restore — no broken nodes
+      mainEl.innerHTML = originalHTML;
       hits = []; cur = 0; countEl.textContent = '';
     }
 
     function doSearch(q) {
       clearHL();
       if (!q.trim()) return;
-
       const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-
-      // Walk text nodes of restored main
       const walker = document.createTreeWalker(mainEl, NodeFilter.SHOW_TEXT);
       const nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
@@ -675,7 +649,6 @@
         re.lastIndex = 0;
         if (!re.test(text)) return;
         re.lastIndex = 0;
-
         const frag = document.createDocumentFragment();
         let last = 0, m;
         while ((m = re.exec(text)) !== null) {
