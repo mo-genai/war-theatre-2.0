@@ -180,51 +180,51 @@
       border-radius: 10px;
     }
 
-    /* ── Header ── */
+/* ── Header ── */
 header {
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.2rem;
   text-align: center;
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 4rem;
   font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 0.45rem;
+  line-height: 1.15;
+  margin-bottom: 0.7rem;
 }
 
 .subtitle {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 400;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 1rem;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
 }
 
-    /* ── Article meta ── */
-    .article-meta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      direction: rtl;
-    }
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 400;
-    }
-    .meta-item svg {
-      width: 13px; height: 13px;
-      stroke: var(--muted);
-      fill: none;
-      flex-shrink: 0;
-      opacity: 0.75;
-    }
+/* ── Article meta ── */
+.article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.35rem;
+  flex-wrap: wrap;
+  direction: rtl;
+}
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+.meta-item svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--muted);
+  fill: none;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
 
     /* ── Content styles ── */
     hr.divider { border: none; border-top: 1px solid var(--rule); margin: 2.6rem 0; }
@@ -266,11 +266,21 @@ h1 {
     .x-link svg { width: 13px; height: 13px; fill: var(--muted); transition: fill 0.35s; }
 
     /* ── Mobile ── */
-    @media (max-width: 600px) {
-      html { font-size: 15px; }
-      main { padding: 4.6rem 1.3rem 8rem; }
-      h1 { font-size: 1.85rem; }
-
+    .menu-btn{display:none;width:32px;height:24px;padding:0;border:0;background:transparent;cursor:pointer;flex-direction:column;justify-content:center;gap:6px}.menu-btn span{display:block;width:28px;height:3px;background:var(--fg);border-radius:2px}
+   @media (max-width: 600px){
+  html{font-size:15px}
+  #topbar{padding:.85rem 1rem}
+  #topbar-inner{position:relative;display:flex;align-items:center;justify-content:space-between;min-height:52px}
+  .search-wrap{display:none!important}.menu-btn{display:flex}
+  .topbar-left{display:flex;align-items:center;justify-content:flex-start;flex:0 0 44px}
+  .topbar-mid{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center}
+  .topbar-right{display:flex;align-items:center;justify-content:flex-end;flex:0 0 auto}
+  #topbar-mid-logo{display:none!important}.logo-mobile{display:block!important;height:56px;width:auto}
+  .toggle-wrap{gap:.55rem}.toggle-label{display:inline-block;font-size:1rem;color:var(--fg);font-weight:500}
+  .toggle-track{width:44px;height:24px;border:2px solid var(--fg);background:transparent}.toggle-track.on{background:transparent}
+  .toggle-thumb{width:16px;height:16px;top:2px;right:2px;background:var(--fg);box-shadow:none}.dark .toggle-thumb{background:var(--fg)}
+  .toggle-track.on .toggle-thumb{transform:translateX(-20px)}
+}
       /* Mobile topbar: search left | toggle center-right | logo RIGHT */
       #topbar { padding: 0.55rem 1rem; }
       #topbar-inner {
@@ -294,13 +304,18 @@ h1 {
   <div id="topbar">
     <div id="topbar-inner">
 
-      <!-- Desktop: left = search | Mobile: left = search -->
-      <div class="topbar-left">
-        <div class="search-wrap">
-          <input type="text" id="search-input" placeholder="ابحث هنا .." autocomplete="off" />
-          <div id="search-count"></div>
-        </div>
-      </div>
+<!-- Desktop: left = search + menu | Mobile: left = menu -->
+<div class="topbar-left">
+  <button class="menu-btn" type="button" aria-label="القائمة">
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="search-wrap">
+    <input type="text" id="search-input" placeholder="ابحث هنا .." autocomplete="off" />
+    <div id="search-count"></div>
+  </div>
+</div>
 
       <!-- Desktop: center = logo | Mobile: center = toggle -->
       <div class="topbar-mid" id="topbar-mid-logo">
