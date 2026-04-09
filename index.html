@@ -92,18 +92,17 @@
     .topbar-mid   { display: flex; align-items: center; justify-content: center; }
     .topbar-right { display: flex; align-items: center; justify-content: flex-end; gap: 0.8rem; }
 
-    /* Logo */
-    .logo-img {
-      height: 30px;
-      width: auto;
-      display: block;
-      mix-blend-mode: multiply;
-      transition: opacity 0.2s;
-    }
-    .dark .logo-img {
-      filter: invert(1) brightness(0.9);
-      mix-blend-mode: screen;
-    }
+/* Logo */
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  transition: opacity 0.2s;
+}
+
+.dark .logo-img {
+  filter: invert(1) brightness(0.9);
+}
 
     /* Toggle */
     .toggle-wrap {
@@ -182,20 +181,25 @@
     }
 
     /* ── Header ── */
-    header { margin-bottom: 2.2rem; text-align: center; }
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      line-height: 1.35;
-      margin-bottom: 0.7rem;
-    }
-    .subtitle {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.4rem;
-    }
+header {
+  margin-bottom: 1.6rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 0.45rem;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
 
     /* ── Article meta ── */
     .article-meta {
