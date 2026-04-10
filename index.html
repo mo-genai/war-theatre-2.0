@@ -7,83 +7,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-   :root {
-      --bg: #edf3f6;
-      --fg: #261a0b;
-      --muted: #7a6a52;
-      --rule: #c2d0d6;
-      --blockquote-bg: #e2edf1;
-      --blockquote-border: #a8bec8;
-      --search-bg: #f5f9fb;
-      --search-border: #c2d0d6;
-      /* ── Toggle colors ── */
-      --toggle-track:  #cdd3d6;
-      --toggle-border: #261a0b;
-      --toggle-thumb:  #261a0b;
-      /* ─────────────────── */
-      --highlight: #cce0ea;
-      --topbar-bg: #edf3f6;
-    }
-    .dark {
-      --bg: #0f0f0d;
-      --fg: #e8e3d8;
-      --muted: #8a8278;
-      --rule: #2a2a26;
-      --blockquote-bg: #161612;
-      --blockquote-border: #3a3a34;
-      --search-bg: #1a1a16;
-      --search-border: #2e2e28;
-      /* ── Toggle colors dark ── */
-      --toggle-track:  #3a3a34;
-      --toggle-border: #5a5a54;
-      --toggle-thumb:  #e8e3d8;
-      /* ──────────────────────── */
-      --highlight: #2e2e22;
-      --topbar-bg: #0f0f0d;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 17px; scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--fg);
-      font-family: 'Noto Sans Arabic', sans-serif;
-      font-weight: 400;
-      transition: background-color 0.35s, color 0.35s;
-      min-height: 100vh;
-    }
-
-    /* ── Progress bar ── */
-    #progress-bar {
-      position: fixed;
-      top: 0; right: 0;
-      height: 2px;
-      width: 0%;
-      background: var(--fg);
-      opacity: 0.35;
-      z-index: 600;
-      transition: width 0.08s linear;
-      pointer-events: none;
-    }
-
     /* ── Topbar ── */
     #topbar {
       position: fixed;
-      top: 2px; left: 0; right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 400;
       background-color: var(--topbar-bg);
-      padding: 0.7rem 2rem;
-      transition: background-color 0.35s,
-                  transform 0.3s cubic-bezier(0.4,0,0.2,1),
-                  opacity 0.3s ease;
+      padding: 0.75rem 2rem;
+      border-bottom: 1px solid var(--rule);
+      transition: background-color 0.35s, transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
     }
-    #topbar.hidden {
-      transform: translateY(-110%);
-      opacity: 0;
-    }
+    #topbar.hidden { transform: translateY(-110%); opacity: 0; }
 
+    /* Desktop: 3-column grid — right=Links | center=logo | left=toggle+search */
     #topbar-inner {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -91,6 +29,185 @@
       max-width: 1100px;
       margin: 0 auto;
       gap: 1rem;
+    }
+
+    /* Direction in RTL: right is the start, left is the end */
+    .topbar-right { display: flex; align-items: center; justify-content: flex-start; gap: 1.5rem; }
+    .topbar-mid   { display: flex; align-items: center; justify-content: center; }
+    .topbar-left  { display: flex; align-items: center; justify-content: flex-end; gap: 1rem; }
+
+    /* ── Nav Links (Like Meem) ── */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 1.125rem;
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { opacity: 0.7; }
+
+    /* ── Logo Protection ── */
+    .logo-img {
+      height: 70px; /* مقاس مناسب ومتناسق */
+      width: auto;
+      display: block;
+      transition: opacity 0.2s;
+      /* أكواد الحماية من النسخ والحفظ */
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-user-drag: none;
+    }
+    .dark .logo-img { filter: invert(1) brightness(0.9); }
+
+    /* ── Toggle ── */
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      user-select: none;
+      flex-shrink: 0;
+      direction: rtl;
+    }
+    .toggle-label {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 0.875rem;
+      color: var(--fg);
+      font-weight: 400;
+      white-space: nowrap;
+      line-height: 1;
+    }  
+    .toggle-track {
+      width: 2rem;
+      height: 1rem;
+      border-radius: 4px;
+      border: 1px solid var(--fg);
+      background-color: #d9d9d9;
+      position: relative;
+      transition: background-color 0.3s, border-color 0.3s;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+    .dark .toggle-track { background-color: var(--toggle-track); border-color: transparent; }
+    .toggle-thumb {
+      position: absolute;
+      top: 50%;
+      right: 3px;
+      transform: translateY(-50%);
+      width: 0.625rem;
+      height: 0.625rem;
+      border-radius: 2px;
+      background-color: var(--fg);
+      transition: transform 0.28s, background-color 0.35s;
+    }
+    .toggle-track.on .toggle-thumb { transform: translate(-14px, -50%); }
+
+    /* ── Search ── */
+    .search-wrap { flex-shrink: 0; position: relative; display: flex; align-items: center; }
+    #search-input {
+      width: 160px;
+      height: 1.5rem;
+      padding: 0 0.5rem;
+      background-color: transparent;
+      border: 1px solid var(--fg);
+      color: var(--fg);
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      border-radius: 4px;
+      outline: none;
+      direction: rtl;
+      transition: border-color 0.2s, background-color 0.35s, color 0.35s;
+    }
+    #search-input::placeholder { color: var(--fg); opacity: 0.7; }
+    #search-input:focus { border-color: var(--muted); }
+    #search-count { font-size: 0.63rem; color: var(--muted); position: absolute; top: 100%; right: 0; padding-top: 0.2rem; }
+
+    /* ── Hamburger (Mobile Menu exactly like Meem) ── */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .menu-icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem; /* 10px spacing */
+      justify-content: center;
+      align-items: center;
+    }
+    .menu-icon-line {
+      width: 1.5rem; /* 24px width */
+      height: 3px;
+      background-color: var(--fg);
+      transition: background-color 0.35s;
+    }
+
+    /* ── Hero Figure (الصورة ممدودة مثل ميم) ── */
+    .hero-figure {
+      position: relative;
+      margin: 0 0 2.8rem;
+      border-radius: 4px; /* زوايا ناعمة مثل ميم */
+      overflow: hidden;
+      line-height: 0;
+      width: 100%;
+      height: 370px; /* الارتفاع الدقيق في ميم 23.125rem */
+      box-shadow: none; /* إلغاء الظل لتبدو مسطحة مثلهم */
+    }
+    .hero-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* لتمتد الصورة وتغطي المساحة بدون أن تتشوه */
+      display: block;
+    }
+
+    /* ── Article meta (التاريخ والقراءة) ── */
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      direction: rtl;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      padding-bottom: 1.5rem; /* تنزيل النص ووضع مسافة للخط */
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--rule); /* الخط السفلي الفاصل */
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── Mobile Responsive ── */
+    @media (max-width: 600px) {
+      .hero-figure { height: 250px; } /* صورة طبيعية في الجوال */
+      
+      #topbar-inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .topbar-right { width: auto; justify-content: flex-start; }
+      .topbar-mid   { display: none; } /* إخفاء المنتصف في الجوال إن لم يحتج */
+      .topbar-left  { width: auto; justify-content: flex-end; }
     }
 
     .topbar-left  { display: flex; align-items: center; justify-content: flex-start; gap: 0.85rem; }
@@ -350,15 +467,32 @@
   <div id="topbar">
     <div id="topbar-inner">
 
-      <!-- SLOT LEFT: Desktop=search+toggle | Mobile=logo -->
-      <div class="topbar-left">
+      <!-- SLOT RIGHT: Desktop=Links | Mobile=Logo -->
+      <div class="topbar-right">
+        <!-- Desktop: Nav Links -->
+        <nav class="nav-links d-only">
+          <a href="#">محتوى مقروء</a>
+          <a href="#">تعرف علينا</a>
+          <a href="#">اكتب معنا</a>
+        </nav>
+        
+        <!-- Mobile: logo -->
+        <img class="logo-img m-only-block" src="malat2.png" alt="مآلات" draggable="false" oncontextmenu="return false;" style="display:none;" />
+      </div>
 
-        <!-- Desktop: search + toggle (تم الترتيب مثل موقع ميم) -->
+      <!-- SLOT MID: Desktop=Logo -->
+      <div class="topbar-mid">
+        <!-- Desktop: logo -->
+        <img class="logo-img d-only" src="malat2.png" alt="مآلات" draggable="false" oncontextmenu="return false;" />
+      </div>
+
+      <!-- SLOT LEFT: Desktop=Toggle+Search | Mobile=Hamburger -->
+      <div class="topbar-left">
+        <!-- Desktop: toggle + search -->
         <div class="search-wrap d-only">
           <input type="text" id="search-input" placeholder="أبحث هنا .." autocomplete="off" />
           <div id="search-count"></div>
         </div>
-        
         <div class="toggle-wrap d-only" onclick="toggleDark()">
           <span class="toggle-label">الوضع الليلي</span>
           <div class="toggle-track" id="toggle-track-d">
@@ -366,25 +500,16 @@
           </div>
         </div>
 
-        <!-- Mobile: logo (visual right in RTL) -->
-        <img class="logo-img m-only-block" src="malat2.png" alt="مآلات"
-             style="display:none;" />
-      </div>
-
-      <!-- SLOT MID: Desktop=logo | Mobile=toggle -->
-      <div class="topbar-mid">
-
-        <!-- Desktop: logo -->
-        <img class="logo-img d-only" src="malat2.png" alt="مآلات" />
-
-        <!-- Mobile: toggle + label -->
-        <div class="toggle-wrap m-only" onclick="toggleDark()" style="display:none;">
-          <span class="toggle-label">الوضع الليلي</span>
-          <div class="toggle-track" id="toggle-track-m">
-            <div class="toggle-thumb"></div>
+        <!-- Mobile: Hamburger Menu -->
+        <button class="hamburger m-only" aria-label="القائمة">
+          <div class="menu-icon-wrapper">
+            <div class="menu-icon-line"></div>
+            <div class="menu-icon-line"></div>
           </div>
-        </div>
+        </button>
       </div>
+
+    </div>
 
       <!-- SLOT RIGHT: Desktop=empty | Mobile=hamburger -->
       <div class="topbar-right">
