@@ -131,31 +131,28 @@
     }
 
     .toggle-track {
-      width: 2.5rem;           /* عرض الـ pill */
-      height: 1.2rem;          /* ارتفاع الـ pill */
+      width: 40px;
+      height: 20px;
       border-radius: 999px;
-      border: 1.5px solid var(--toggle-border);
-      background-color: var(--toggle-track);
+      border: 1.5px solid #261a0b;
+      background-color: #cdd3d6;
       position: relative;
-      transition: background-color 0.3s, border-color 0.3s;
+      transition: background-color 0.3s;
       flex-shrink: 0;
     }
-
+    .toggle-track.on { background-color: #cdd3d6; }
     .toggle-thumb {
       position: absolute;
       top: 2px;
-      right: 2px;              /* يبدأ من اليمين (الوضع الفاتح = OFF) */
-      width: 0.9rem;
-      height: 0.9rem;
+      right: 2px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background: var(--toggle-thumb);
-      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1),
-                  background 0.35s;
+      background: #261a0b;
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), background 0.35s;
     }
-
-    /* عند تفعيل الوضع الليلي: الـ thumb ينتقل لليسار */
-    .toggle-track.on .toggle-thumb {
-      transform: translateX(-1.19rem);
+    .dark .toggle-thumb { background: #261a0b; }
+    .toggle-track.on .toggle-thumb { transform: translateX(-19px); }
     }
     /* ════════════════════════════════ */
 
