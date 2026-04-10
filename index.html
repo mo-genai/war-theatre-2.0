@@ -302,6 +302,7 @@
 
       /* Switch to flex, space-between: right=logo | center=toggle | left=hamburger */
       #topbar-inner {
+        position: relative;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -309,8 +310,8 @@
         gap: 0;
       }
 
-      .topbar-left  { flex-shrink: 0; justify-content: flex-start; }
-      .topbar-mid   { flex: 1; justify-content: center; }
+      .topbar-left  { width: 80px; flex-shrink: 0; justify-content: flex-start; }
+      .topbar-mid   { position: absolute; left: 50%; transform: translateX(-50%); justify-content: center; }
       .topbar-right { flex-shrink: 0; justify-content: flex-end; }
 
       /* Show/hide mobile vs desktop elements */
