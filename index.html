@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #dce9f0;
+      --bg: #edf3f6;
       --fg: #261a0b;
       --muted: #7a6a52;
       --rule: #c2d0d6;
@@ -18,9 +18,9 @@
       --search-bg: #f5f9fb;
       --search-border: #c2d0d6;
       --toggle-track: #bccbd2;
-      --toggle-active: #1a1a1a;
+      --toggle-active: #261a0b;
       --highlight: #cce0ea;
-      --topbar-bg: #dce9f0;
+      --topbar-bg: #edf3f6;
     }
     .dark {
       --bg: #0f0f0d;
@@ -68,6 +68,7 @@
       top: 2px; left: 0; right: 0;
       z-index: 400;
       background-color: var(--topbar-bg);
+      /* NO border-bottom */
       padding: 0.65rem 1.8rem;
       transition: background-color 0.35s,
                   transform 0.3s cubic-bezier(0.4,0,0.2,1),
@@ -78,7 +79,7 @@
       opacity: 0;
     }
 
-    /* ── Desktop layout: search+toggle left | logo center | (empty) right ── */
+    /* Desktop layout: search left | logo center | toggle right */
     #topbar-inner {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -89,46 +90,21 @@
     }
     .topbar-left  { display: flex; align-items: center; justify-content: flex-start; gap: 0.7rem; }
     .topbar-mid   { display: flex; align-items: center; justify-content: center; }
-    .topbar-right { display: flex; align-items: center; justify-content: flex-end; }
+    .topbar-right { display: flex; align-items: center; justify-content: flex-end; gap: 0.8rem; }
 
-    /* ── Logo ── */
-    .logo-img {
-      height: 40px;
-      width: auto;
-      display: block;
-      transition: opacity 0.2s;
-    }
-    .dark .logo-img {
-      filter: invert(1) brightness(0.9);
-    }
-    /* logo-mobile hidden on desktop */
-    .logo-mobile { display: none; }
+/* Logo */
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  transition: opacity 0.2s;
+}
 
-    /* ── Hamburger (mobile only, hidden on desktop) ── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 5px;
-      width: 22px;
-      height: 22px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      flex-shrink: 0;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background-color: var(--fg);
-      border-radius: 2px;
-      transition: background-color 0.35s;
-    }
+.dark .logo-img {
+  filter: invert(1) brightness(0.9);
+}
 
-    /* ── Toggle ── */
+    /* Toggle */
     .toggle-wrap {
       display: flex;
       align-items: center;
@@ -143,8 +119,7 @@
       white-space: nowrap;
     }
     .toggle-track {
-      width: 40px;
-      height: 22px;
+      width: 2.2rem; height: 1.2rem;
       border-radius: 999px;
       background-color: var(--toggle-track);
       position: relative;
@@ -154,19 +129,17 @@
     .toggle-track.on { background-color: var(--toggle-active); }
     .toggle-thumb {
       position: absolute;
-      top: 3px;
-      right: 3px;
-      width: 16px;
-      height: 16px;
+      top: 0.12rem; right: 0.12rem;
+      width: 0.96rem; height: 0.96rem;
       border-radius: 50%;
       background: #fff;
       transition: transform 0.28s, background 0.35s;
       box-shadow: 0 1px 3px rgba(0,0,0,0.22);
     }
     .dark .toggle-thumb { background: #1c1c1a; }
-    .toggle-track.on .toggle-thumb { transform: translateX(-18px); }
+    .toggle-track.on .toggle-thumb { transform: translateX(-1rem); }
 
-    /* ── Search ── */
+    /* Search */
     .search-wrap { max-width: 200px; }
     #search-input {
       width: 100%;
@@ -208,25 +181,25 @@
     }
 
     /* ── Header ── */
-    header {
-      margin-bottom: 1.6rem;
-      text-align: center;
-    }
+header {
+  margin-bottom: 1.6rem;
+  text-align: center;
+}
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 0.45rem;
-    }
+h1 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 0.45rem;
+}
 
-    .subtitle {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
+.subtitle {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
 
     /* ── Article meta ── */
     .article-meta {
@@ -296,47 +269,21 @@
     @media (max-width: 600px) {
       html { font-size: 15px; }
       main { padding: 4.6rem 1.3rem 8rem; }
-      h1 { font-size: 1.7rem; }
+      h1 { font-size: 1.85rem; }
 
-      /* Mobile topbar: hamburger left | toggle center | logo right */
+      /* Mobile topbar: search left | toggle center-right | logo RIGHT */
       #topbar { padding: 0.55rem 1rem; }
-
       #topbar-inner {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 0;
-        position: relative;
+        gap: 0.6rem;
       }
-
-      /* Left: show hamburger only */
-      .topbar-left {
-        flex-shrink: 0;
-        gap: 0;
-      }
-      .hamburger { display: flex; }
-      .search-wrap { display: none; }
-      /* Hide toggle from left on mobile (it will be centered absolutely) */
-      .topbar-left .toggle-wrap { display: none; }
-
-      /* Center: hide desktop logo */
-      .topbar-mid { display: none; }
-
-      /* Toggle: centered absolutely in topbar */
-      #toggle-center {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        align-items: center;
-        gap: 0.45rem;
-        cursor: pointer;
-        user-select: none;
-      }
-
-      /* Right: show mobile logo */
+      .topbar-left  { flex: 1; justify-content: flex-start; }
+      .topbar-mid   { flex-shrink: 0; }
       .topbar-right { flex-shrink: 0; }
-      .logo-mobile { display: block; }
+      .search-wrap  { max-width: 130px; }
+      .toggle-label { display: none; }
     }
   </style>
 </head>
@@ -347,41 +294,30 @@
   <div id="topbar">
     <div id="topbar-inner">
 
-      <!-- Left: search + toggle (desktop) | hamburger (mobile) -->
+      <!-- Desktop: left = search | Mobile: left = search -->
       <div class="topbar-left">
-        <button class="hamburger" aria-label="القائمة">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
         <div class="search-wrap">
           <input type="text" id="search-input" placeholder="ابحث هنا .." autocomplete="off" />
           <div id="search-count"></div>
         </div>
+      </div>
+
+      <!-- Desktop: center = logo | Mobile: center = toggle -->
+      <div class="topbar-mid" id="topbar-mid-logo">
+        <img class="logo-img" src="malat.png" alt="مآلات" />
+      </div>
+
+      <!-- Desktop: right = toggle | Mobile: right = logo -->
+      <div class="topbar-right">
         <div class="toggle-wrap" onclick="toggleDark()">
           <div class="toggle-track on" id="toggle-track">
             <div class="toggle-thumb"></div>
           </div>
           <span class="toggle-label">الوضع الليلي</span>
         </div>
-      </div>
-
-      <!-- Center: logo (desktop) -->
-      <div class="topbar-mid">
-        <img class="logo-img" src="malat.png" alt="مآلات" />
-      </div>
-
-      <!-- Toggle centered (mobile only) -->
-      <div id="toggle-center" onclick="toggleDark()">
-        <div class="toggle-track on" id="toggle-track-mobile">
-          <div class="toggle-thumb"></div>
-        </div>
-        <span class="toggle-label">الوضع الليلي</span>
-      </div>
-
-      <!-- Right: logo (mobile) -->
-      <div class="topbar-right">
-        <img class="logo-img logo-mobile" src="malat.png" alt="مآلات" />
+        <!-- Logo shown on mobile (right side) -->
+        <img class="logo-img logo-mobile" src="malat.png" alt="مآلات"
+             style="display:none;" />
       </div>
 
     </div>
@@ -717,14 +653,21 @@
   </main>
 
   <script>
+    /* ── Responsive logo swap ── */
+    function applyLogoLayout() {
+      const isMobile = window.innerWidth <= 600;
+      document.getElementById('topbar-mid-logo').style.display = isMobile ? 'none' : 'flex';
+      document.querySelector('.logo-mobile').style.display = isMobile ? 'block' : 'none';
+    }
+    applyLogoLayout();
+    window.addEventListener('resize', applyLogoLayout);
+
     /* ── Dark Mode (starts ON) ── */
     let dark = true;
     function toggleDark() {
       dark = !dark;
       document.body.classList.toggle('dark', dark);
-      // Sync both toggle tracks
       document.getElementById('toggle-track').classList.toggle('on', dark);
-      document.getElementById('toggle-track-mobile').classList.toggle('on', dark);
     }
 
     /* ── Progress bar + topbar hide ── */
