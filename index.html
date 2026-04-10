@@ -322,11 +322,11 @@
       /* Hamburger visible on mobile */
       .hamburger { display: flex; }
 
-      .logo-img { height: 56px; }
+      .logo-img { height: 35px; }
     }
   </style>
 </head>
-<body class="dark">
+<body>
 
   <div id="progress-bar"></div>
 
@@ -338,7 +338,7 @@
 
         <!-- Desktop: toggle + search -->
         <div class="toggle-wrap d-only" onclick="toggleDark()">
-          <div class="toggle-track on" id="toggle-track-d">
+          <div class="toggle-track" id="toggle-track-d">
             <div class="toggle-thumb"></div>
           </div>
           <span class="toggle-label">الوضع الليلي</span>
@@ -361,7 +361,7 @@
 
         <!-- Mobile: toggle + label -->
         <div class="toggle-wrap m-only" onclick="toggleDark()" style="display:none;">
-          <div class="toggle-track on" id="toggle-track-m">
+          <div class="toggle-track" id="toggle-track-m">
             <div class="toggle-thumb"></div>
           </div>
           <span class="toggle-label">الوضع الليلي</span>
@@ -711,7 +711,7 @@
 
   <script>
     /* ── Dark Mode (starts ON) ── */
-    let dark = true;
+    let dark = false;
 
     function toggleDark() {
       dark = !dark;
